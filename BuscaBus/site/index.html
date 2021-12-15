@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="vendor/bootstrap/css/bootstrap.min.css"/>
+  <link href="css/index.css" rel="stylesheet">
+  <title>BuscaBus - Pesquisa</title>
+</head>
+<body class="text-center">
+  <main class="form-signin">
+    <form action="lines.html" method="get">
+      <img class="mb-1 mt-0" src="images/icon.png" width="250" height="250">
+      <h1 class="h1 mb-1 fw-normal">BuscaBus!</h1>
+      <h1 class="h3 mb-3 fw-normal">Digite o número do ônibus desejado ou o nome.</h1>
+
+      <div class="form-floating mb-2">
+        <input type="text" class="form-control" id="floatingSearch" placeholder="Linha" name="search">
+        <label for="floatingSearch">Ex: "070" ou "Cuca Barra"</label>
+      </div>
+      <button class="w-100 btn btn-lg color-green" type="submit">Buscar</button>
+      <p class="mt-5 mb-1 text-muted">&copy; 2021</p>
+    </form>
+  </main>
+</body>
+<script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+</html>

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="vendor/bootstrap/css/bootstrap.min.css"/>
+  <link href="css/lines.css" rel="stylesheet">
+  <title>BuscaBus - Linhas</title>
+</head>
+<body class="text-center">
+  <main class="w-75 pt-3 m-auto">
+    <h1 class="h1 mb-3">Linhas encontradas com sua pesquisa</h1>
+    <div>
+      <table class="table table-dark table-striped">
+        <thead>
+          <tr>
+            <th scope="col" class="text-xl-center">#</th>
+            <th scope="col" class="text-xl-center">Número</th>
+            <th scope="col" class="text-xl-center">Nome</th>
+          </tr>
+        </thead>
+        <tbody id="content">
+        </tbody>
+      </table>
+    </div>
+  </main>
+</body>
+
+<script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script>
+  async function getLines(){
+    const urlParams = new URLSearchParams(window.location.search);
+    const search = urlParams.get('search');
+    try {
+      const response = await fetch("https://busca-bus-api.herokuapp.com/linhas/"+search);
+      const data = await response.json();
+      show(data);
+    } catch (error) {
+      console.log(error)
+    }
+  }
+
+  getLines();
+
+  function show(lines){
+    let output = "";
+
+    let i = 1
+    for(let line of lines){
+      output += `<tr><th scope="row">${i}</th><td>${line.numero}</td><td>${line.locais}</td></tr>`;
+      i++;
+    }
+
+    document.getElementById("content").innerHTML = output;
+    // 
+  }
+</script>
+
+</html>
